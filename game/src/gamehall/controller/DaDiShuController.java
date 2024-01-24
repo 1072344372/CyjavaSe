@@ -2,12 +2,9 @@ package gamehall.controller;
 
 import gamehall.View.DaDiShuView;
 import gamehall.View.GameJFrame;
-import gamehall.View.LoginJFrame;
 import gamehall.View.UI;
 import gamehall.controller.itf.GameHallController;
 import gamehall.controller.time.MouseTime;
-import gamehall.model.domain.Bomb;
-import gamehall.model.domain.Map;
 import gamehall.model.domain.Player;
 import gamehall.model.domain.mouse.Mouse;
 
@@ -17,15 +14,14 @@ import java.awt.*;
  * 大数字控制器
  */
 public class DaDiShuController extends GameHallController {
-    private  String GAMENAME="打地鼠游戏";
+    private String GAMENAME = "打地鼠游戏";
     private static DaDiShuController instance;
     public static boolean gameOver = false;
     public static Integer count = 0;
     private Player player;
     private DaDiShuView daDiShuView;
-    private Map mouseMap;
     private Mouse mouse;
-    private Bomb bomb = new Bomb();
+    private MouseTime mouseTime;
 
     private UI ui;
 
@@ -46,18 +42,18 @@ public class DaDiShuController extends GameHallController {
     private void initDaDiShuGame() {
         setMouse(new Mouse());
         ui = new UI(this);
-        MouseTime mouseTime = new MouseTime(this);
-        mouseTime.getMouseTimer().start();
-        LoginJFrame loginJFrame = ui.getLoginJFrame();
+        player=new Player();
+        mouseTime = new MouseTime(this);
+        // LoginJFrame loginJFrame = ui.getLoginJFrame();
         GameJFrame gameJFrame = ui.getGameJFrame();
         gameJFrame.setVisible(true);
 
-        // gameOver=false;
-        // count=0;
-        // mouseMap = new MouseMap();
-        // player = new Player(mouseMap);
-        // player.customMap();
-        // player.setUsername(UserController.UserName);
+
+    }
+
+    public void startGame() {
+        mouseTime.setCountdownSeconds(60);
+        mouseTime.getMouseTimer().start();
     }
 
     /**
@@ -80,22 +76,40 @@ public class DaDiShuController extends GameHallController {
     /**
      * 游戏结束
      */
-    private void showGameOver() {
+    public void showGameOver() {
 
     }
 
     /**
      * 结束的方法
      */
-    private void goodBye() {
+    public void goodBye() {
 
     }
 
     /**
      * 欢迎的方法
      */
-    private void welcome() {
+    public void welcome() {
 
+    }
+
+    /**
+     * 判断是否击中
+     * @return boolean
+     */
+    public boolean isHitMouse() {
+        Rectangle mouseRectangle=new Rectangle(mouse.getMouseX(),mouse.getMouseY(),mouse.getMouseW(),mouse.getMouseH());//地鼠矩形
+        Rectangle playRectangle=new Rectangle(player.getPlayerX(),player.getPlayerY(),player.getChuiW(),player.getChuiH());//锤子矩形
+        if (playRectangle.intersects(mouseRectangle)){
+            if (!mouse.isHit()){
+                mouse.setHit(true);
+                System.out.println("打到了！");
+            }
+        }else {
+            System.out.println("没打中");
+        }
+        return false;
     }
 
     @Override
@@ -132,4 +146,15 @@ public class DaDiShuController extends GameHallController {
         this.mouse = mouse;
     }
 
+    @Override
+    public String toString() {
+        return "DaDiShuController{" +
+                "GAMENAME='" + GAMENAME + '\'' +
+                ", player=" + player +
+                ", daDiShuView=" + daDiShuView +
+                ", mouse=" + mouse +
+                ", mouseTime=" + mouseTime +
+                ", ui=" + ui +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package gamehall.model.domain;
 
+import gamehall.constant.GameConstant;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,22 +23,30 @@ public class Player extends User {
     public Player() {
         this.playerX = 100;
         this.playerY = 100;
+        this.chuiH=100;
+        this.chuiW=100;
         this.playerName = "123";
-        this.chuiImage = new ImageIcon("images/chui2.png").getImage();
+        this.chuiImage = new ImageIcon(GameConstant.CHUI_OPEN).getImage();
 
     }
-
     public void drawChui(Graphics g) {
         if (chuiType == 1) {
-            chuiImage = new ImageIcon("images/chui2.png").getImage();
+            chuiImage = new ImageIcon(GameConstant.CHUI_OPEN).getImage();
             g.drawImage(chuiImage, playerX, playerY, chuiH, chuiW, null);
 
         } else {
-            chuiImage = new ImageIcon("images/chui1.png").getImage();
+            chuiImage = new ImageIcon(GameConstant.CHUI_CLOSE).getImage();
             g.drawImage(chuiImage, playerX, playerY, chuiH, chuiW, null);
         }
     }
 
+    public int getChuiType() {
+        return chuiType;
+    }
+
+    public void setChuiType(int chuiType) {
+        this.chuiType = chuiType;
+    }
 
     public int getPlayerScore() {
         return playerScore;
@@ -95,4 +105,17 @@ public class Player extends User {
         this.chuiImage = chuiImage;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                ", playerX=" + playerX +
+                ", playerY=" + playerY +
+                ", chuiH=" + chuiH +
+                ", chuiW=" + chuiW +
+                ", playerScore=" + playerScore +
+                ", chuiType=" + chuiType +
+                ", chuiImage=" + chuiImage +
+                '}';
+    }
 }

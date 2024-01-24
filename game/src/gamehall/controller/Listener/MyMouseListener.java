@@ -20,6 +20,7 @@ public class MyMouseListener implements MouseListener {
     }
 
     public MyMouseListener(DaDiShuController daDiShuController) {
+        System.out.println("MyMouseListener构造器执行了一次\n"+daDiShuController);
         this.daDiShuController = daDiShuController;
     }
 
@@ -30,7 +31,9 @@ public class MyMouseListener implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        daDiShuController.getPlay().setChuiType(2);
+        //判断是否打中
+        daDiShuController.isHitMouse();
     }
 
     @Override

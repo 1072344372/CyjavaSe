@@ -2,10 +2,6 @@ package gamehall.View;
 
 import gamehall.controller.itf.GameHallController;
 
-/**
- * @author :罗汉
- * @date : 2024/1/23
- */
 public class UI {
     private LoginJFrame loginJFrame;
     private GameJFrame gameJFrame;

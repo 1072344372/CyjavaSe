@@ -16,20 +16,33 @@ import java.util.Random;
  * 类型 名字 坐标x 坐标y 随机坐标的方法
  */
 public class Mouse implements Cry, RandomPosition {
-    private String type = GameConstant.WHITE_MOUSE;
+    private String type = GameConstant.DISHUHI_MOUSE;
     private String mouseName = "老鼠";
     private int mouseX = 50;
     private int mouseY = 30;
-    private int mouseH = 140;
-    private int mouseW = 150;
+    private  int mouseH = 140;
+    private  int mouseW = 150;
     private Image mouseImage;
     private int mouseScore;
-
+    private boolean isHit=false;
     private Random random = new Random();
 
+    public boolean isHit() {
+        return isHit;
+    }
+
+    public void setHit(boolean hit) {
+        isHit = hit;
+    }
+
     public void drawMouse(Graphics g) {
-        mouseImage = new ImageIcon(this.getType()).getImage();
-        g.drawImage(mouseImage, mouseX, mouseY, mouseH, mouseW, null);
+        if (isHit){
+            mouseImage = new ImageIcon(GameConstant.DISHUHI2_MOUSE).getImage();
+            g.drawImage(mouseImage, mouseX, mouseY, mouseH, mouseW, null);
+        }else {
+            mouseImage = new ImageIcon(this.getType()).getImage();
+            g.drawImage(mouseImage, mouseX, mouseY, mouseH, mouseW, null);
+        }
     }
 
     public void mouseMove() {
@@ -37,10 +50,16 @@ public class Mouse implements Cry, RandomPosition {
         int num = random.nextInt(3) + 1;
         switch (num) {
             case 1:
+                mouseX=50;
+                mouseY=30;
                 break;
             case 2:
+                mouseX=150;
+                mouseY=130;
                 break;
             case 3:
+                mouseX=250;
+                mouseY=230;
                 break;
 
         }
@@ -117,5 +136,19 @@ public class Mouse implements Cry, RandomPosition {
         this.random = random;
     }
 
+    public int getMouseH() {
+        return mouseH;
+    }
 
+    public void setMouseH(int mouseH) {
+        this.mouseH = mouseH;
+    }
+
+    public int getMouseW() {
+        return mouseW;
+    }
+
+    public void setMouseW(int mouseW) {
+        this.mouseW = mouseW;
+    }
 }

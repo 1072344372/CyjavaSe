@@ -28,7 +28,6 @@ public class ActionListener implements java.awt.event.ActionListener {
                 String account = loginJpanel.getAccText().getText();
                 String password = loginJpanel.getPasswordText().getText();
                 String code = loginJpanel.getCodeText().getText();
-
                 System.out.println("账号：" + account);
                 System.out.println("密码：" + password);
                 System.out.println("验证码：" + code);
@@ -41,7 +40,8 @@ public class ActionListener implements java.awt.event.ActionListener {
             case "code":
                 break;
             case "start":
-                System.out.println("start");
+                daDiShuController.getDaDiShuView().setListener();
+                daDiShuController.startGame();
                 break;
             case "end":
                 System.out.println("end");
