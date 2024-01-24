@@ -1,5 +1,7 @@
 package gamehall.View;
 
+import gamehall.controller.time.MouseTime;
+
 import javax.swing.*;
 
 /**
@@ -9,6 +11,7 @@ import javax.swing.*;
 public class RightJPanel extends JPanel  {
     private JLabel scoreLabel;
     private JLabel combLabel;
+    private JLabel countdownSeconds;
     public RightJPanel() {
         setLayout(null);
         scoreLabel=new JLabel("得分: 0");
@@ -18,6 +21,9 @@ public class RightJPanel extends JPanel  {
 
         combLabel=new JLabel("联机数: 0");
         combLabel.setBounds(20,100,100,30);
+
+        combLabel=new JLabel("倒计时："+ MouseTime.countdownSeconds);
+        combLabel.setBounds(20,200,100,30);
         add(combLabel);
     }
 }

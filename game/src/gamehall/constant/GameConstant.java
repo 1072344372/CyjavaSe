@@ -8,7 +8,7 @@ public interface GameConstant {
     /**
      * 白老鼠 🐁
      */
-    String WHITE_MOUSE = "\uD83D\uDC01";
+    String WHITE_MOUSE = "game/images/disu.png";
     /**
      * 黄色鼠 🐁
      */

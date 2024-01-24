@@ -1,7 +1,7 @@
 package gamehall.View;
 
 import gamehall.controller.DaDiShuController;
-import gamehall.controller.GameHallController;
+import gamehall.controller.itf.GameHallController;
 
 /**
  * @author :罗汉

@@ -4,7 +4,7 @@ import gamehall.View.LoginJFrame;
 import gamehall.View.LoginJPanel;
 import gamehall.View.UI;
 import gamehall.controller.DaDiShuController;
-import gamehall.controller.GameHallController;
+import gamehall.controller.itf.GameHallController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

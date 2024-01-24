@@ -1,6 +1,6 @@
 package gamehall.View;
 
-import gamehall.controller.GameHallController;
+import gamehall.controller.itf.GameHallController;
 import gamehall.controller.Listener.WindosListener;
 
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package gamehall.controller;
+package gamehall.controller.itf;
 
 /**
  * 用来声明的

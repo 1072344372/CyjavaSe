@@ -1,6 +1,7 @@
 package gamehall.controller;
 
 import gamehall.View.UI;
+import gamehall.controller.itf.GameHallController;
 import gamehall.dao.MouseFactory;
 import gamehall.model.domain.Bomb;
 import gamehall.model.domain.Map;
@@ -11,7 +12,7 @@ import gamehall.model.domain.mouse.Mouse;
 /**
  * 大数字控制器
  */
-public class DaDiShuController implements GameHallController{
+public class DaDiShuController implements GameHallController {
 
     private static DaDiShuController instance;
     public static boolean gameOver = false;
@@ -20,8 +21,16 @@ public class DaDiShuController implements GameHallController{
     private Map mouseMap;
     private Mouse mouse;
     private Bomb bomb=new Bomb();
-    private UI ui;
 
+    public Mouse getMouse() {
+        return mouse;
+    }
+
+    public void setMouse(Mouse mouse) {
+        this.mouse = mouse;
+    }
+
+    private UI ui;
     private DaDiShuController() {
 
     }

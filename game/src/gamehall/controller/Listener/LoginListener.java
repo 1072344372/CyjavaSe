@@ -2,52 +2,41 @@ package gamehall.controller.Listener;
 
 import gamehall.View.LoginJFrame;
 import gamehall.View.LoginJPanel;
-import gamehall.View.UI;
-import gamehall.controller.DaDiShuController;
-import gamehall.controller.GameHallController;
+import gamehall.controller.UserController;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginListener implements ActionListener {
-    private DaDiShuController daDiShuController;
+    private LoginJFrame loginJFrame;
+    private LoginJPanel loginJPanel;
 
-    public LoginListener(GameHallController daDiShuController) {
-        System.out.println("执行了构造函数一次");
-        this.daDiShuController = (DaDiShuController) daDiShuController;
+    // public LoginListener(LoginJFrame loginJFrame) {
+    //     this.loginJFrame = loginJFrame;
+    // }
+    public LoginListener(LoginJPanel loginJPanel) {
+        this.loginJPanel = loginJPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        UI ui = daDiShuController.getUi();
-        LoginJFrame loginJFrame = ui.getLoginJFrame();
-        LoginJPanel loginJpanel = loginJFrame.getLoginJpanel();
         System.out.println(e.getActionCommand());
         switch (e.getActionCommand()) {
             case "login":
-                String account = loginJpanel.getAccText().getText();
-                String password = loginJpanel.getPasswordText().getText();
-                String code = loginJpanel.getCodeText().getText();
+                String account = loginJPanel.getAccText().getText();
+                String password = loginJPanel.getPasswordText().getText();
+                String code = loginJPanel.getCodeText().getText();
 
                 System.out.println("账号：" + account);
                 System.out.println("密码：" + password);
                 System.out.println("验证码：" + code);
-                //todo: 登录效验做完整
-                if ("1234".equals(code)){
-                    daDiShuController.getUi().getLoginJFrame().setVisible(false);
-                    daDiShuController.getUi().getGameJFrame().setVisible(true);
+                // todo: 登录效验做完整
+                if ("1234".equals(code)) {
+                    UserController.isLogin=true;
+                    loginJPanel.setVisible(false);
                 }
                 break;
             case "code":
-                break;
-            case "start":
-                System.out.println("start");
-                break;
-            case "end":
-                System.out.println("end");
-                int i = JOptionPane.showConfirmDialog(null, "退出游戏？", "警告", JOptionPane.CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null);
-                if (i==0) System.exit(0);
                 break;
         }
     }

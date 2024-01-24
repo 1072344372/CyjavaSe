@@ -1,6 +1,6 @@
 package gamehall.View;
 
-import gamehall.controller.GameHallController;
+import gamehall.controller.itf.GameHallController;
 import gamehall.controller.Listener.LoginListener;
 
 
@@ -55,7 +55,7 @@ public class LoginJPanel extends JPanel {
         add(codeText);
         /////////////////////////////////
         loginButton = new JButton("登录"); // 创建登录按钮
-        LoginListener loginListener = new LoginListener(daDiShuController);
+        LoginListener loginListener = new LoginListener(this);
         loginButton.setActionCommand("login"); // 设置按钮命令
         loginButton.addActionListener(loginListener);
         loginButton.setBounds(170, 400, 150, 40);

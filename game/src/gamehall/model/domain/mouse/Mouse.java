@@ -7,6 +7,8 @@ import gamehall.model.behavior.RandomPosition;
 import gamehall.model.domain.Map;
 import gamehall.model.domain.MouseMap;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -16,11 +18,33 @@ import java.util.Random;
 public class Mouse implements Cry, RandomPosition {
     private String type = GameConstant.WHITE_MOUSE;
     private String mouseName = "老鼠";
-    private int mouseX;
-    private int mouseY;
+    private int mouseX = 50;
+    private int mouseY = 30;
+    private int mouseH = 140;
+    private int mouseW = 150;
+    private Image mouseImage;
     private int mouseScore;
 
     private Random random = new Random();
+
+    public void drawMouse(Graphics g) {
+        mouseImage = new ImageIcon(this.getType()).getImage();
+        g.drawImage(mouseImage, mouseX, mouseY, mouseH, mouseW, null);
+    }
+
+    public void mouseMove() {
+        random = new Random();
+        int num = random.nextInt(3) + 1;
+        switch (num) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+
+        }
+    }
 
     /**
      * 随机老鼠
@@ -34,9 +58,10 @@ public class Mouse implements Cry, RandomPosition {
         String[][] mouseBoard = ((MouseMap) map).getMouseBoard();
         mouseBoard[mouseX][mouseY] = type;
     }
+
     @Override
     public void cry() {
-        System.out.println(getMouseName()+"吱吱吱");
+        System.out.println(getMouseName() + "吱吱吱");
     }
 
     @Override
