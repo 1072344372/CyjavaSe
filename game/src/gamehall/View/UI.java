@@ -1,6 +1,5 @@
 package gamehall.View;
 
-import gamehall.controller.DaDiShuController;
 import gamehall.controller.itf.GameHallController;
 
 /**
@@ -15,7 +14,7 @@ public class UI {
     public UI(GameHallController gameHallController) {
         this.gameHallController = gameHallController;
         loginJFrame=new LoginJFrame(this.gameHallController);
-        gameJFrame=new GameJFrame((DaDiShuController) this.gameHallController);
+        gameJFrame=new GameJFrame(this.gameHallController);
     }
 
     public LoginJFrame getLoginJFrame() {

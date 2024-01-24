@@ -2,7 +2,7 @@ package gamehall.View;
 
 import gamehall.View.Itf.GameView;
 import gamehall.controller.DaDiShuController;
-import gamehall.controller.Listener.MyMouseListener;
+import gamehall.controller.Listener.MyMouseMotionListener;
 import gamehall.model.domain.mouse.Mouse;
 
 import javax.swing.*;
@@ -10,12 +10,13 @@ import java.awt.*;
 
 //TODO: 整合地图对象，老鼠对象，玩家对象，
 public class DaDiShuView extends JPanel implements GameView {
+
     private DaDiShuController daDiShuController;
     public DaDiShuView(DaDiShuController daDiShuController) {
         this.daDiShuController = daDiShuController;
         setLayout(null);
-        MyMouseListener myMouseListener = new MyMouseListener();
-        addMouseListener(myMouseListener);
+        MyMouseMotionListener myMouseListener = new MyMouseMotionListener(daDiShuController);
+        addMouseMotionListener(myMouseListener);
     }
 
     @Override

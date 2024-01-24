@@ -1,36 +1,50 @@
 package gamehall.controller.Listener;
 
-import java.awt.event.MouseAdapter;
+import gamehall.controller.DaDiShuController;
+import gamehall.model.domain.Player;
+
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
- * @author :罗汉
- * @date : 2024/1/23
+ * 鼠标点击监听器
+ *
+ * @author 罗汉
+ * @date 2024/01/24
  */
-public class MyMouseListener extends MouseAdapter {
+public class MyMouseListener implements MouseListener {
+    private DaDiShuController daDiShuController;
+    private Player play;
+
+    public MyMouseListener() {
+    }
+
+    public MyMouseListener(DaDiShuController daDiShuController) {
+        this.daDiShuController = daDiShuController;
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("e.getX()+\"-\"+e.getY() = " + e.getX() + "-" + e.getY());
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("e.getX()+\"-\"+e.getY() = " + e.getX()+"-"+e.getY());
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("e.getX()+\"-\"+e.getY() = " + e.getX()+"-"+e.getY());
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        System.out.println("e.getX()+\"-\"+e.getY() = " + e.getX()+"-"+e.getY());
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("e.getX()+\"-\"+e.getY() = " + e.getX()+"-"+e.getY());
+
     }
 }

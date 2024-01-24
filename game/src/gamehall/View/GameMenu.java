@@ -1,7 +1,7 @@
 package gamehall.View;
 
-import gamehall.controller.DaDiShuController;
 import gamehall.controller.Listener.ActionListener;
+import gamehall.controller.itf.GameHallController;
 
 import javax.swing.*;
 
@@ -10,7 +10,7 @@ import javax.swing.*;
  * @date : 2024/1/22
  */
 public class GameMenu extends JMenuBar {
-    public GameMenu(DaDiShuController daDiShuController) {
+    public GameMenu(GameHallController daDiShuController) {
         ActionListener myActionListener = new ActionListener(daDiShuController);
 
         JMenu jMenu = new JMenu("菜单");
